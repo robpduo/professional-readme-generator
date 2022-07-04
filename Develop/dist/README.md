@@ -1,1 +1,1 @@
-"# Generated Readme <br/> Project Title: \"title\""
+# Generated Readme <br/> Project Title: \"title\"
