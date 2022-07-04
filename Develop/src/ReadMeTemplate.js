@@ -1,4 +1,3 @@
 export default template => {
-    return `
-    <h1>Generated ReadMe</h1>`;
+    return '<h1>Generated ReadMe</h1>';
 }
