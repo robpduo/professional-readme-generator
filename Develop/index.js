@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 import inquirer from "inquirer";
+import ReadMeTemplate from "./src/ReadMeTemplate.js";
 import generateMarkdown from "./utils/generateMarkdown.js";
 
 // TODO: Create an array of questions for user input
@@ -66,7 +67,7 @@ function init() {
 
     promptUser()
         .then(projectData => {
-            return generateMarkdown(projectData);
+            return generateMarkdown(ReadMeTemplate(projectData));
         })
         .then(writeFileResponse => {
             console.log(writeFileResponse);
