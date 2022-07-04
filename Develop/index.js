@@ -1,5 +1,6 @@
 // TODO: Include packages needed for this application
 import inquirer from "inquirer";
+import generateMarkdown from "./utils/generateMarkdown.js";
 
 // TODO: Create an array of questions for user input
 const questions = [];
@@ -44,16 +45,7 @@ const promptUser = () => {
                     return false;
                 }
             }
-        }
-    ]);
-};
-
-const promptProject = projectData => {
-    if (projectData) {
-        console.log(projectData);
-    }
-
-    return inquirer.prompt([
+        },
         {
             type: 'input',
             name: 'pName',
@@ -68,16 +60,18 @@ const promptProject = projectData => {
             }
         }
     ]);
-}
+};
 
 function init() {
+
     promptUser()
-        .then(userData => {
-            console.log(userData);
-            promptProject().then(projectData => {
-                console.log(projectData);
-            });
+        .then(projectData => {
+            return generateMarkdown(projectData);
         })
+        .then(writeFileResponse => {
+            console.log(writeFileResponse);
+        })
+
 };
 
 // Function call to initialize app
