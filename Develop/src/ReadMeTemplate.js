@@ -10,8 +10,16 @@ const renderBadge = badge => {
     return `[![license](https://img.shields.io/badge/license-${badge}-blue)](https://shields.io)`;
 };
 
+const renderInstall = instructions => {
+    console.log(instructions.split('/'));
+
+    return `<ol>${instructions.split('/').map(data => {
+        return `<li>${data}</li>`
+    }).join(' ')}</ol>`;
+};
+
 export default templateData => {
-    const {title, description, installation, usage, tests, license, username} = templateData; 
+    const {title, description, installation, usage, tests, license, username, contributors, email} = templateData; 
 
     return `# ${title}
 ${license.map(data => {
@@ -24,13 +32,16 @@ ${license.map(data => {
 [Tests](#tests)<br>
 [Credits](#credits)<br>
 [License](#license)<br>
+[Contributors](#contributors)<br>
 [Questions](#questions)<br>
 ## Description
-${description}
+${description}<br>
 ## Installation
-${installation}
+${renderInstall(installation)}<br>
+
 ## Usage
 ${usage}
+
 ## Tests
 ${renderTests(tests)}
 
@@ -38,5 +49,13 @@ ${renderTests(tests)}
 ${license.map(data => {
     return `${LicenseInfo(data, username)}`
 }).join(' ')}
+
+## Contributors
+${renderInstall(contributors)}<br>
+
+## Questions?
+GitHub Username: [${username}](https://github.com/${username}) <br>
+If you have additional questions please send an message to the email below:<br>
+Email Address: ${email}
 `;
 }

@@ -7,9 +7,9 @@ import generateMarkdown from "./utils/generateMarkdown.js";
 const questions = [];
 questions.push("What is the title of your project?: ");
 questions.push("Please enter a description for your project: ");
-questions.push("Please enter the Installation Instructions for your project: "); //TODO create a list for instructions
+questions.push("Please enter the Installation Instructions for your project(Separate each instruction with a '/'): "); //TODO create a list for instructions
 questions.push("Please enter the usage information for your project: ");
-questions.push("Please enter the contribution guidelines for your project: ");
+questions.push("Please enter the names of contributors for your project(Separate each name with a '/'): ");
 questions.push("Please enter any tests done for your project: ");
 questions.push("Select a applicable license from the following list: ");
 questions.push("Please enter a Github Username: ");
@@ -111,6 +111,11 @@ const promptUser = () => {
             message: 'What license is this project covered under?',
             choices: ['MIT', 'Apache', 'GNU', 'ISC', ]
         },
+        {
+            type: 'input',
+            name: 'contributors',
+            message: questions[4]
+        }
     ]);
 };
 
